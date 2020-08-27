@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_JOOMLALABS_SWIPERSLIDER_MODULE</name>
+	<creationDate>22/08/20</creationDate>
+	<author>Joomla!LABS</author>
+	<authorEmail>info@joomlalabs.com</authorEmail>
+	<authorUrl>https://joomlalabs.com</authorUrl>
+	<copyright>Copyright (C) 2015 - 2020 Joomla!LABS. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0.0</version>
+	<description>MOD_JOOMLALABS_SWIPERSLIDER_MODULE_XML_DESCRIPTION</description>
+
+	<files>
+		<filename module="mod_joomlalabs_swiperslider_module">mod_joomlalabs_swiperslider_module.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<folder>media</folder>
+		<folder>subform</folder>
+		<filename>mod_joomlalabs_swiperslider_module.xml</filename>
+	</files>
+
+	<media destination="mod_joomlalabs_swiperslider_module" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+	</media>
+
+	<!-- Update servers -->
+	<updateservers>
+		<server type="extension" priority="1" name="Joomla!LABS Swiper Slider Module Update Server">
+			https://raw.githubusercontent.com/JoomlaLABS/updateservers/master/mod_joomlalabs_swiperslider_module.xml
+		</server>
+	</updateservers>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+						name="pagination"
+						type="list"
+						default="0"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_PAGINATION_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_PAGINATION_DESCRIPTION"
+						class=""
+				>
+					<option value="0">JNO</option>
+					<option value="swiper-pagination">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_DEFAULT</option>
+					<option value="dynamicBullets">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_DYNAMICBYULLETS</option>
+					<option value="progressbar">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_PROGRESS</option>
+					<option value="fraction">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_FRACTION</option>
+					<option value="bullet">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_BULLET</option>
+				</field>
+				<field
+						name="navigation"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_NAVIGATION_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_NAVIGATION_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field
+						name="scrollbar"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SCROLLBAR_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SCROLLBAR_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field
+						name="autoplay"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOPLAY_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOPLAY_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="autoplayDelay"
+						type="number"
+						showon="autoplay:1"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOPLAY_DELAY_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOPLAY_DELAY_DESCRIPTION"
+						default="2500"
+						min="0"
+						step="100"
+						filter="integer"
+				/>
+				<field
+						name="disableOnInteraction"
+						type="radio"
+						showon="autoplay:1"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOPLAY_DISABLEONINTERACTION_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOPLAY_DISABLEONINTERACTION_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="false"
+				>
+					<option value="false">JNO</option>
+					<option value="true">JYES</option>
+				</field>
+				<field
+						name="loop"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_LOOP_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_LOOP_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="direction"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_DIRECTION_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_DIRECTION_DESCRIPTION"
+						default="horizontal"
+						class="btn-group"
+				>
+					<option value="horizontal">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_HORIZONTAL</option>
+					<!--<option value="vertical">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_VERTICAL</option>-->
+				</field>
+				<field
+						name="dir"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_DIR_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_DIR_DESCRIPTION"
+						default="global-config"
+						class="btn-group"
+				>
+					<option value="global-config" class="btn btn-outline-success">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_GLOBAL_CONFIGURATION</option>
+					<option value="ltr">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_LTR</option>
+					<option value="rtl">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_RTL</option>
+				</field>
+				<field
+						name="forceFullWidth"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_FORCEFULLWIDTH_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_FORCEFULLWIDTH_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="autoHeight"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOHEIGHT_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_AUTOHEIGHT_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="spaceBetween"
+						type="list"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SPACEBETWEEN_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SPACEBETWEEN_DESCRIPTION"
+						default="0"
+						filter="integer"
+						validate="options"
+				>
+					<option value="0">JNONE</option>
+					<option value="5">J5</option>
+					<option value="10">J10</option>
+					<option value="15">J15</option>
+					<option value="20">J20</option>
+					<option value="25">J25</option>
+					<option value="30">J30</option>
+					<option value="50">J50</option>
+					<option value="100">J100</option>
+					<option value="200">J200</option>
+					<option value="500">J500</option>
+				</field>
+				<field
+						name="slidesPerView"
+						type="list"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SLIDESPERVIEW_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SLIDESPERVIEW_DESCRIPTION"
+						default="1"
+						validate="options"
+				>
+					<option value="'auto'">JGLOBAL_AUTO</option>
+					<option value="1">J1</option>
+					<option value="2">J2</option>
+					<option value="3">J3</option>
+					<option value="4">J4</option>
+					<option value="5">J5</option>
+					<option value="6">J6</option>
+					<option value="7">J7</option>
+					<option value="8">J8</option>
+					<option value="9">J9</option>
+					<option value="10">J10</option>
+				</field>
+				<!--<field
+						name="slidesPerColumn"
+						type="list"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SLIDESPERCOLUMN_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SLIDESPERCOLUMN_DESCRIPTION"
+						default="1"
+						validate="options"
+				>
+					<option value="1">J1</option>
+					<option value="2">J2</option>
+					<option value="3">J3</option>
+					<option value="4">J4</option>
+					<option value="5">J5</option>
+					<option value="6">J6</option>
+					<option value="7">J7</option>
+					<option value="8">J8</option>
+					<option value="9">J9</option>
+					<option value="10">J10</option>
+				</field>-->
+				<field
+						name="centeredSlides"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_CENTEREDSLIDES_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_CENTEREDSLIDES_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="freeMode"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_FREEMODE_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_FREEMODE_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="zoom"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_ZOOM_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_ZOOM_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="keyboard"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_KEYBOARD_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_KEYBOARD_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="mousewheel"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_MOUSEWHEEL_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_MOUSEWHEEL_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<!--<field
+						name="lazy"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_LAZY_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_LAZY_DESCRIPTION"
+						layout="joomla.form.field.radio.switcher"
+						default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>-->
+        	</fieldset>
+			<fieldset name="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_REPEATABLE_FIELDS_LABEL">
+				<field
+						name="mediaSource"
+						type="radio"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_MEDIASOURCE_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_MEDIASOURCE_DESCRIPTION"
+						default="imageList"
+						class="btn-group"
+				>
+					<option value="folder">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_FOLDER</option>
+					<option value="imageList">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_IMAGELIST</option>
+				</field>
+				<field
+						name="slidesFolder"
+						type="folderlist"
+						showon="mediaSource:folder"
+						default=""
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SLIDESFOLDER_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_SLIDESFOLDER_DESCRIPTION"
+						directory="images"
+						hide_none="true"
+						recursive="true"
+				/>
+				<field
+						name="repeatable_fields"
+						type="subform"
+						showon="mediaSource:imageList"
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_REPEATABLE_FIELDS_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_REPEATABLE_FIELDS_DESCRIPTION"
+						min="1"
+						max="1000"
+						required="true"
+						formsource="/modules/mod_joomlalabs_swiperslider_module/subform/slide.xml"
+						multiple="true"
+						layout="joomla.form.field.subform.repeatable"
+						buttons="add,remove,move"
+				/>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+						name="layout"
+						type="modulelayout"
+						label="JFIELD_ALT_LAYOUT_LABEL"
+						class="custom-select"
+						default="_:default"
+				/>
+				<field
+						name="moduleclass_sfx"
+						type="textarea"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						rows="3"
+				/>
+				<field
+						name="cache"
+						type="list"
+						label="COM_MODULES_FIELD_CACHING_LABEL"
+						default="1"
+						filter="integer"
+						validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+						name="cache_time"
+						type="number"
+						label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+						default="900"
+						filter="integer"
+				/>
+				<field
+						name="cachemode"
+						type="hidden"
+						default="static"
+					>
+					<option value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

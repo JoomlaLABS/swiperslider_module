@@ -1,0 +1,27 @@
+/**
+ * Joomla!LABS Swiper Slider Module
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * https://joomlalabs.com
+ *
+ * Copyright (C) 2015 - 2020 Joomla!LABS. All rights reserved.
+ *
+ * Released under GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * Released on: August 22, 2020
+ */
+
+.gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.gallery-thumbs .swiper-slide {
+    width: 25%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+}

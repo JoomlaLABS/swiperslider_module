@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <field
+            name="image"
+            type="media"
+            label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_IMAGE"
+            description="MOD_JOOMLALABS_ISWIPERSLIDER_MODULE_IMAGE_DESCRIPTION"
+    />
+</form>
