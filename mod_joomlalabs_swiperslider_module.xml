@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
 	<name>MOD_JOOMLALABS_SWIPERSLIDER_MODULE</name>
-	<creationDate>22/08/20</creationDate>
+	<creationDate>22/08/2020</creationDate>
 	<author>Joomla!LABS</author>
 	<authorEmail>info@joomlalabs.com</authorEmail>
 	<authorUrl>https://joomlalabs.com</authorUrl>
 	<copyright>Copyright (C) 2015 - 2020 Joomla!LABS. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<description>MOD_JOOMLALABS_SWIPERSLIDER_MODULE_XML_DESCRIPTION</description>
 
 	<files>
@@ -299,6 +299,7 @@
 				>
 					<option value="folder">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_FOLDER</option>
 					<option value="imageList">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_IMAGELIST</option>
+					<option value="csvList">MOD_JOOMLALABS_SWIPERSLIDER_MODULE_VALUE_CSVLIST</option>
 				</field>
 				<field
 						name="slidesFolder"
@@ -324,6 +325,17 @@
 						multiple="true"
 						layout="joomla.form.field.subform.repeatable"
 						buttons="add,remove,move"
+				/>
+				<field
+						name="csvList"
+						type="textarea"
+						showon="mediaSource:csvList"
+						default=""
+						label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_CSVLIST_LABEL"
+						description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_CSVLIST_DESCRIPTION"
+						rows="10"
+						cols="5"
+						filter="raw"
 				/>
 			</fieldset>
 			<fieldset name="advanced">

@@ -61,17 +61,6 @@ if ($params->get('lazy')) {
     ');
 }
 
-// Access to module parameters
-$allImagesUrl = Array();
-if($params->get('mediaSource') == 'folder') {
-    foreach(glob('images/'.$params->get('slidesFolder').'/*.{jpg,JPG,jpeg,JPEG,png,PNG}',GLOB_BRACE) as $file) {
-	    $allImagesUrl[] = 'images/'.$params->get('slidesFolder').'/'.basename($file);
-    }
-} elseif ($params->get('mediaSource') == 'imageList') {
-	foreach ($params->get('repeatable_fields') as $slide) {
-		$allImagesUrl[] = $slide->image;
-    }
-}
 ?>
 
 <!-- Swiper -->
