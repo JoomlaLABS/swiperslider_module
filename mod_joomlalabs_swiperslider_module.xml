@@ -26,7 +26,7 @@
 
 	<!-- Update servers -->
 	<updateservers>
-		<server type="extension" priority="1" name="Joomla!LABS Swiper Slider Module Update Server">
+		<server type="extension" priority="1" name="Joomla!LABS Swiper Slider Module">
 			https://raw.githubusercontent.com/JoomlaLABS/updateservers/master/mod_joomlalabs_swiperslider_module.xml
 		</server>
 	</updateservers>
