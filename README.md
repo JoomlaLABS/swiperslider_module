@@ -22,4 +22,8 @@ Site Preview
 
 Administrator Preview
 ---------------------
-
+![screenshot](https://user-images.githubusercontent.com/906604/93741506-d6a1c100-fbec-11ea-946a-fd694f354986.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
+![screenshot](https://user-images.githubusercontent.com/906604/93740911-b3c2dd00-fbeb-11ea-9faa-d7f86aebfcae.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
+![screenshot](https://user-images.githubusercontent.com/906604/93741208-42375e80-fbec-11ea-8299-7611fe9907b3.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
+![screenshot](https://user-images.githubusercontent.com/906604/93740992-e1a82180-fbeb-11ea-9089-6e667e8e2280.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
+![screenshot](https://user-images.githubusercontent.com/906604/93741313-7ca0fb80-fbec-11ea-8774-2e4e4f9da3eb.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
