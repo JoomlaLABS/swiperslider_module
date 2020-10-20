@@ -8,9 +8,9 @@
  * @link       https://joomlalabs.com
  */
 
-use Joomla\CMS\Helper\ModuleHelper;
-
 defined('_JEXEC') or die;
+
+use Joomla\CMS\Helper\ModuleHelper;
 
 // The below line is no longer used in Joomla 4
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
