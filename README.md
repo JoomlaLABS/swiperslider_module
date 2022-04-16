@@ -9,7 +9,7 @@ An advance Slider Module for Joomla! 4.
 
 Developed using
 
-<a href="https://swiperjs.com" target="_blank"><img src="https://swiperjs.com/i/share-banner.png" width="33%" alt="swiperjs" /></a>
+<a href="https://swiperjs.com" target="_blank"><img src="https://camo.githubusercontent.com/3cd0f58d5ab0820e7528f276dbffca9c1b8b34e3fc184967c03e7f0d88a93571/68747470733a2f2f7377697065726a732e636f6d2f696d616765732f73686172652d62616e6e65722e706e67" width="33%" alt="swiperjs" /></a>
 
 
 Site Preview
