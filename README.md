@@ -27,3 +27,7 @@ Administrator Preview
 ![screenshot](https://user-images.githubusercontent.com/906604/93741208-42375e80-fbec-11ea-8299-7611fe9907b3.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
 ![screenshot](https://user-images.githubusercontent.com/906604/93740992-e1a82180-fbeb-11ea-9089-6e667e8e2280.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
 ![screenshot](https://user-images.githubusercontent.com/906604/93741313-7ca0fb80-fbec-11ea-8774-2e4e4f9da3eb.png "Joomla!LABS Swiper Slider Module Administration Screenshot")
+
+Donate
+---------------------
+<a href="https://www.buymeacoffee.com/razzo"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer&emoji=🍺&slug=razzo&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
