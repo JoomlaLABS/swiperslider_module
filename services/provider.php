@@ -4,8 +4,11 @@
  * @package     Joomla.Site
  * @subpackage  mod_joomlalabs_swiperslider_module
  *
+ * @author      Joomla!LABS <info@joomlalabs.com>
  * @copyright   (C) 2015 - 2025 Joomla!LABS. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @link        https://joomlalabs.com
+ * @since       2.0.0
  */
 
 \defined('_JEXEC') or die;
