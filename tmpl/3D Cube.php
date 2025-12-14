@@ -28,7 +28,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 $app = Factory::getApplication();
 $document = $app->getDocument();
 
-// Inline styles per configurazioni specifiche
+// Inline styles for specific configurations
 $inlineStyles = '';
 
 if ($params->get('forceFullWidth')) {
@@ -77,7 +77,7 @@ if (!empty($inlineStyles)) {
     $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-custom-' . $module->id]);
 }
 
-// Determina la direzione RTL
+// Determine RTL direction
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 

@@ -38,40 +38,40 @@ class Dispatcher extends AbstractModuleDispatcher
     {
         $data = parent::getLayoutData();
 
-        // Recupera Web Asset Manager
+        // Get Web Asset Manager
         /** @var \Joomla\CMS\WebAsset\WebAssetManager $wa */
         $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
-        // Registra e carica assets Swiper
+        // Register and load Swiper assets
         $this->registerAssets($wa);
 
-        // Carica assets base
+        // Load base assets
         $wa->useStyle('swiper.bundle')
            ->useStyle('swiper.style')
            ->useScript('swiper.bundle')
            ->useScript('swiper.init');
 
-        // Carica CSS specifico per pagination bullet se necessario
+        // Load specific CSS for bullet pagination if needed
         if ($data['params']->get('pagination') == 'bullet') {
             $wa->useStyle('swiper.pagination-bullet');
         }
 
-        // Carica CSS thumbs per il layout Thumbs Gallery
+        // Load CSS thumbs for Thumbs Gallery layout
         $layout = $data['params']->get('layout', 'default');
         if ($layout == 'thumbs-gallery') {
             $wa->useStyle('swiper.thumbs');
         }
 
-        // Prepara configurazione Swiper come JSON
+        // Prepare Swiper configuration as JSON
         $swiperConfig         = $this->prepareSwiperConfig($data['params']);
         $data['swiperConfig'] = json_encode($swiperConfig, JSON_UNESCAPED_SLASHES);
 
-        // Genera l'array delle immagini basato sulla sorgente selezionata
+        // Generate images array based on selected source
         $params       = $data['params'];
         $allImagesUrl = [];
 
         if ($params->get('mediaSource') == 'folder') {
-            // Carica immagini da cartella
+            // Load images from folder
             $slidesFolder = JPATH_ROOT . '/images/' . $params->get('slidesFolder');
 
             if (is_dir($slidesFolder)) {
@@ -88,29 +88,29 @@ class Dispatcher extends AbstractModuleDispatcher
                 }
             } else {
                 Factory::getApplication()->enqueueMessage(
-                    'Swiper Slider: La cartella specificata non esiste',
+                    'Swiper Slider: The specified folder does not exist',
                     'warning'
                 );
             }
         } elseif ($params->get('mediaSource') == 'imageList') {
-            // Carica immagini da lista repeatable
+            // Load images from repeatable list
             $repeatableFields = $params->get('repeatable_fields');
 
-            // Controlla il tipo e contenuto
+            // Check type and content
             if ($repeatableFields) {
-                // Se è una stringa JSON, decodificala
+                // If it's a JSON string, decode it
                 if (is_string($repeatableFields)) {
                     $repeatableFields = json_decode($repeatableFields);
                 }
 
-                // Se è un oggetto, convertilo in array
+                // If it's an object, convert to array
                 if (is_object($repeatableFields)) {
                     $repeatableFields = (array) $repeatableFields;
                 }
 
                 if (is_array($repeatableFields)) {
                     foreach ($repeatableFields as $slide) {
-                        // Converti in oggetto se necessario
+                        // Convert to object if needed
                         if (is_array($slide)) {
                             $slide = (object) $slide;
                         }
@@ -122,7 +122,7 @@ class Dispatcher extends AbstractModuleDispatcher
                 }
             }
         } elseif ($params->get('mediaSource') == 'csvList') {
-            // Carica immagini da CSV
+            // Load images from CSV
             $csvList = $params->get('csvList', '');
 
             if (!empty($csvList)) {
@@ -161,7 +161,7 @@ class Dispatcher extends AbstractModuleDispatcher
         // Slides per view
         $slidesPerView = $params->get('slidesPerView', 1);
         if ($slidesPerView != 1) {
-            // Se è 'auto', lo lasciamo come stringa
+            // If it's 'auto', keep it as string
             if ($slidesPerView == "'auto'") {
                 $config['slidesPerView'] = 'auto';
             } else {
@@ -169,7 +169,7 @@ class Dispatcher extends AbstractModuleDispatcher
             }
         }
 
-        // Slides per column (legacy, potrebbe non essere più usato)
+        // Slides per column (legacy, may not be used anymore)
         $slidesPerColumn = $params->get('slidesPerColumn', 1);
         if ($slidesPerColumn > 1) {
             $config['slidesPerColumn'] = (int) $slidesPerColumn;
@@ -220,12 +220,12 @@ class Dispatcher extends AbstractModuleDispatcher
             $config['mousewheel'] = true;
         }
 
-        // Lazy loading (se abilitato)
+        // Lazy loading (if enabled)
         if ($params->get('lazy')) {
             $config['lazy'] = true;
         }
 
-        // Effect specifico per layout
+        // Specific effect for layout
         switch ($layout) {
             case '3d-coverflow':
                 $config['effect']          = 'coverflow';
@@ -289,9 +289,9 @@ class Dispatcher extends AbstractModuleDispatcher
                     $paginationConfig['type'] = 'fraction';
                     break;
                 case 'bullet':
-                    // Per bullet numerato, dovremmo usare una funzione JavaScript
-                    // Ma dato che non possiamo passare funzioni in JSON,
-                    // gestiremo questo caso nel file swiper-init.js
+                    // For numbered bullets, we should use a JavaScript function
+                    // But since we can't pass functions in JSON,
+                    // we'll handle this case in the swiper-init.js file
                     $paginationConfig['renderBullet'] = 'numbered';
                     break;
             }
@@ -330,32 +330,32 @@ class Dispatcher extends AbstractModuleDispatcher
     {
         $registry = $wa->getRegistry();
 
-        // Registra CSS Swiper Bundle
+        // Register CSS Swiper Bundle
         if (!$registry->exists('style', 'swiper.bundle')) {
             $wa->registerStyle('swiper.bundle', 'media/mod_joomlalabs_swiperslider_module/css/swiper-bundle.min.css');
         }
 
-        // Registra CSS Style personalizzato
+        // Register custom CSS Style
         if (!$registry->exists('style', 'swiper.style')) {
             $wa->registerStyle('swiper.style', 'media/mod_joomlalabs_swiperslider_module/css/swiper-style.css', [], [], ['swiper.bundle']);
         }
 
-        // Registra CSS Pagination Bullet
+        // Register CSS Pagination Bullet
         if (!$registry->exists('style', 'swiper.pagination-bullet')) {
             $wa->registerStyle('swiper.pagination-bullet', 'media/mod_joomlalabs_swiperslider_module/css/swiper-pagination-bullet.css', [], [], ['swiper.bundle']);
         }
 
-        // Registra CSS Thumbs
+        // Register CSS Thumbs
         if (!$registry->exists('style', 'swiper.thumbs')) {
             $wa->registerStyle('swiper.thumbs', 'media/mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css', [], [], ['swiper.bundle']);
         }
 
-        // Registra JS Swiper Bundle
+        // Register JS Swiper Bundle
         if (!$registry->exists('script', 'swiper.bundle')) {
             $wa->registerScript('swiper.bundle', 'media/mod_joomlalabs_swiperslider_module/js/swiper-bundle.min.js', [], ['defer' => true]);
         }
 
-        // Registra JS Init
+        // Register JS Init
         if (!$registry->exists('script', 'swiper.init')) {
             $wa->registerScript('swiper.init', 'media/mod_joomlalabs_swiperslider_module/js/swiper-init.js', [], ['defer' => true], ['swiper.bundle']);
         }

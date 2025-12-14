@@ -28,7 +28,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 $app = Factory::getApplication();
 $document = $app->getDocument();
 
-// Inline styles per configurazioni specifiche
+// Inline styles for specific configurations
 $inlineStyles = '';
 
 if ($params->get('forceFullWidth')) {
@@ -71,11 +71,11 @@ if (!empty($inlineStyles)) {
     $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-thumbs-custom-' . $module->id]);
 }
 
-// Determina la direzione RTL
+// Determine RTL direction
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
-// Configurazione per thumbs
+// Thumbs configuration
 $thumbsConfig = [
     'spaceBetween' => (int) $params->get('spaceBetween', 10),
     'slidesPerView' => $params->get('slidesPerView', 4),
