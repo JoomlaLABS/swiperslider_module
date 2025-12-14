@@ -314,32 +314,32 @@ class Dispatcher extends AbstractModuleDispatcher
 
         // Registra CSS Swiper Bundle
         if (!$registry->exists('style', 'swiper.bundle')) {
-            $wa->registerStyle('swiper.bundle', 'mod_joomlalabs_swiperslider_module/css/swiper-bundle.min.css');
+            $wa->registerStyle('swiper.bundle', 'media/mod_joomlalabs_swiperslider_module/css/swiper-bundle.min.css');
         }
 
         // Registra CSS Style personalizzato
         if (!$registry->exists('style', 'swiper.style')) {
-            $wa->registerStyle('swiper.style', 'mod_joomlalabs_swiperslider_module/css/swiper-style.css', [], [], ['swiper.bundle']);
+            $wa->registerStyle('swiper.style', 'media/mod_joomlalabs_swiperslider_module/css/swiper-style.css', [], [], ['swiper.bundle']);
         }
 
         // Registra CSS Pagination Bullet
         if (!$registry->exists('style', 'swiper.pagination-bullet')) {
-            $wa->registerStyle('swiper.pagination-bullet', 'mod_joomlalabs_swiperslider_module/css/swiper-pagination-bullet.css', [], [], ['swiper.bundle']);
+            $wa->registerStyle('swiper.pagination-bullet', 'media/mod_joomlalabs_swiperslider_module/css/swiper-pagination-bullet.css', [], [], ['swiper.bundle']);
         }
 
         // Registra CSS Thumbs
         if (!$registry->exists('style', 'swiper.thumbs')) {
-            $wa->registerStyle('swiper.thumbs', 'mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css', [], [], ['swiper.bundle']);
+            $wa->registerStyle('swiper.thumbs', 'media/mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css', [], [], ['swiper.bundle']);
         }
 
         // Registra JS Swiper Bundle
         if (!$registry->exists('script', 'swiper.bundle')) {
-            $wa->registerScript('swiper.bundle', 'mod_joomlalabs_swiperslider_module/js/swiper-bundle.min.js', [], ['defer' => true]);
+            $wa->registerScript('swiper.bundle', 'media/mod_joomlalabs_swiperslider_module/js/swiper-bundle.min.js', [], ['defer' => true]);
         }
 
         // Registra JS Init
         if (!$registry->exists('script', 'swiper.init')) {
-            $wa->registerScript('swiper.init', 'mod_joomlalabs_swiperslider_module/js/swiper-init.js', [], ['defer' => true], ['swiper.bundle']);
+            $wa->registerScript('swiper.init', 'media/mod_joomlalabs_swiperslider_module/js/swiper-init.js', [], ['defer' => true], ['swiper.bundle']);
         }
     }
 }
