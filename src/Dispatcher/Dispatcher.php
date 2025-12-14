@@ -56,12 +56,6 @@ class Dispatcher extends AbstractModuleDispatcher
             $wa->useStyle('swiper.pagination-bullet');
         }
 
-        // Load CSS thumbs for Thumbs Gallery layout
-        $layout = $data['params']->get('layout', 'default');
-        if ($layout == 'thumbs-gallery') {
-            $wa->useStyle('swiper.thumbs');
-        }
-
         // Prepare Swiper configuration as JSON
         $swiperConfig         = $this->prepareSwiperConfig($data['params']);
         $data['swiperConfig'] = json_encode($swiperConfig, JSON_UNESCAPED_SLASHES);
@@ -99,19 +93,19 @@ class Dispatcher extends AbstractModuleDispatcher
             // Check type and content
             if ($repeatableFields) {
                 // If it's a JSON string, decode it
-                if (is_string($repeatableFields)) {
+                if (\is_string($repeatableFields)) {
                     $repeatableFields = json_decode($repeatableFields);
                 }
 
                 // If it's an object, convert to array
-                if (is_object($repeatableFields)) {
+                if (\is_object($repeatableFields)) {
                     $repeatableFields = (array) $repeatableFields;
                 }
 
-                if (is_array($repeatableFields)) {
+                if (\is_array($repeatableFields)) {
                     foreach ($repeatableFields as $slide) {
                         // Convert to object if needed
-                        if (is_array($slide)) {
+                        if (\is_array($slide)) {
                             $slide = (object) $slide;
                         }
 
@@ -152,9 +146,9 @@ class Dispatcher extends AbstractModuleDispatcher
 
         // Get current layout
         $layout = $params->get('layout', 'default');
-        
+
         // Remove module prefix if present (e.g., "_:3D Coverflow" becomes "3D Coverflow")
-        if (strpos($layout, '_:') === 0) {
+        if (str_starts_with($layout, '_:')) {
             $layout = substr($layout, 2);
         }
 
@@ -302,11 +296,6 @@ class Dispatcher extends AbstractModuleDispatcher
         // Register CSS Pagination Bullet
         if (!$registry->exists('style', 'swiper.pagination-bullet')) {
             $wa->registerStyle('swiper.pagination-bullet', 'media/mod_joomlalabs_swiperslider_module/css/swiper-pagination-bullet.css', [], [], ['swiper.bundle']);
-        }
-
-        // Register CSS Thumbs
-        if (!$registry->exists('style', 'swiper.thumbs')) {
-            $wa->registerStyle('swiper.thumbs', 'media/mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css', [], [], ['swiper.bundle']);
         }
 
         // Register JS Swiper Bundle

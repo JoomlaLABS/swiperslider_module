@@ -71,14 +71,26 @@ if (!empty($inlineStyles)) {
     $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-thumbs-custom-' . $module->id]);
 }
 
+// Register and load thumbs-specific CSS
+$wa = $document->getWebAssetManager();
+$registry = $wa->getRegistry();
+if (!$registry->exists('style', 'swiper.thumbs')) {
+    $wa->registerStyle('swiper.thumbs', 'media/mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css', [], [], ['swiper.bundle']);
+}
+$wa->useStyle('swiper.thumbs');
+
 // Determine RTL direction
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
+// Override main slider config: remove slidesPerView (only for thumbs, not main)
+$config = json_decode($swiperConfig, true);
+unset($config['slidesPerView']);
+$swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
+
 // Thumbs configuration
 $thumbsConfig = [
     'freeMode' => true,
-    'watchSlidesVisibility' => true,
     'watchSlidesProgress' => true,
 ];
 
