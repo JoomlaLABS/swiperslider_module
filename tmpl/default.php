@@ -86,16 +86,16 @@ $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection()
 <!-- Swiper -->
 <div id="swiper-<?php echo $module->id; ?>" 
      class="swiper-container" 
-     data-swiper-config="<?php echo HTMLHelper::_('string.escape', $swiperConfig); ?>"
+     data-swiper-config="<?php echo htmlspecialchars($swiperConfig, ENT_QUOTES, 'UTF-8'); ?>"
      <?php if ($isRtl): ?> dir="rtl"<?php endif; ?>>
      
     <div class="swiper-wrapper">
         <?php foreach ($allImagesUrl as $imageUrl): ?>
             <?php if ($params->get('lazy')): ?>
                 <div class="swiper-slide">
-                    <img data-src="<?php echo HTMLHelper::_('string.escape', $imageUrl); ?>" 
+                    <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
-                         alt="<?php echo HTMLHelper::_('string.escape', basename($imageUrl)); ?>">
+                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
             <?php else: ?>
@@ -104,8 +104,8 @@ $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection()
                         <div class="swiper-zoom-container">
                     <?php endif; ?>
                     
-                    <img src="<?php echo HTMLHelper::_('string.escape', $imageUrl); ?>" 
-                         alt="<?php echo HTMLHelper::_('string.escape', basename($imageUrl)); ?>">
+                    <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
+                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     
                     <?php if ($params->get('zoom')): ?>
                         </div>

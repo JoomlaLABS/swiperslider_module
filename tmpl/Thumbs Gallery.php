@@ -93,16 +93,16 @@ if ($params->get('loop')) {
 <!-- Swiper Gallery Top -->
 <div id="swiper-gallery-top-<?php echo $module->id; ?>" 
      class="swiper-container gallery-top" 
-     data-swiper-config="<?php echo HTMLHelper::_('string.escape', $swiperConfig); ?>"
+     data-swiper-config="<?php echo htmlspecialchars($swiperConfig, ENT_QUOTES, 'UTF-8'); ?>"
      <?php if ($isRtl): ?> dir="rtl"<?php endif; ?>>
      
     <div class="swiper-wrapper">
         <?php foreach ($allImagesUrl as $imageUrl): ?>
             <?php if ($params->get('lazy')): ?>
                 <div class="swiper-slide">
-                    <img data-src="<?php echo HTMLHelper::_('string.escape', $imageUrl); ?>" 
+                    <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
-                         alt="<?php echo HTMLHelper::_('string.escape', basename($imageUrl)); ?>">
+                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
             <?php else: ?>
@@ -111,8 +111,8 @@ if ($params->get('loop')) {
                         <div class="swiper-zoom-container">
                     <?php endif; ?>
                     
-                    <img src="<?php echo HTMLHelper::_('string.escape', $imageUrl); ?>" 
-                         alt="<?php echo HTMLHelper::_('string.escape', basename($imageUrl)); ?>">
+                    <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
+                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     
                     <?php if ($params->get('zoom')): ?>
                         </div>
@@ -142,7 +142,7 @@ if ($params->get('loop')) {
 <!-- Swiper Gallery Thumbs -->
 <div id="swiper-gallery-thumbs-<?php echo $module->id; ?>" 
      class="swiper-container gallery-thumbs"
-     data-swiper-config="<?php echo HTMLHelper::_('string.escape', json_encode($thumbsConfig, JSON_UNESCAPED_SLASHES)); ?>"
+     data-swiper-config="<?php echo htmlspecialchars(json_encode($thumbsConfig, JSON_UNESCAPED_SLASHES), ENT_QUOTES, 'UTF-8'); ?>"
      data-swiper-thumbs-for="swiper-gallery-top-<?php echo $module->id; ?>"
      <?php if ($isRtl): ?> dir="rtl"<?php endif; ?>>
      
@@ -150,15 +150,15 @@ if ($params->get('loop')) {
         <?php foreach ($allImagesUrl as $imageUrl): ?>
             <?php if ($params->get('lazy')): ?>
                 <div class="swiper-slide">
-                    <img data-src="<?php echo HTMLHelper::_('string.escape', $imageUrl); ?>" 
+                    <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
-                         alt="<?php echo HTMLHelper::_('string.escape', basename($imageUrl)); ?>">
+                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
             <?php else: ?>
                 <div class="swiper-slide">
-                    <img src="<?php echo HTMLHelper::_('string.escape', $imageUrl); ?>" 
-                         alt="<?php echo HTMLHelper::_('string.escape', basename($imageUrl)); ?>">
+                    <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
+                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
