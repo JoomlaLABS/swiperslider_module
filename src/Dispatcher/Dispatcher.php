@@ -96,10 +96,28 @@ class Dispatcher extends AbstractModuleDispatcher
             // Carica immagini da lista repeatable
             $repeatableFields = $params->get('repeatable_fields');
 
-            if (\is_array($repeatableFields)) {
-                foreach ($repeatableFields as $slide) {
-                    if (isset($slide->image)) {
-                        $allImagesUrl[] = $slide->image;
+            // Controlla il tipo e contenuto
+            if ($repeatableFields) {
+                // Se è una stringa JSON, decodificala
+                if (is_string($repeatableFields)) {
+                    $repeatableFields = json_decode($repeatableFields);
+                }
+
+                // Se è un oggetto, convertilo in array
+                if (is_object($repeatableFields)) {
+                    $repeatableFields = (array) $repeatableFields;
+                }
+
+                if (is_array($repeatableFields)) {
+                    foreach ($repeatableFields as $slide) {
+                        // Converti in oggetto se necessario
+                        if (is_array($slide)) {
+                            $slide = (object) $slide;
+                        }
+
+                        if (isset($slide->image) && !empty($slide->image)) {
+                            $allImagesUrl[] = $slide->image;
+                        }
                     }
                 }
             }
