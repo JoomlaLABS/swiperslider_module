@@ -152,6 +152,11 @@ class Dispatcher extends AbstractModuleDispatcher
 
         // Get current layout
         $layout = $params->get('layout', 'default');
+        
+        // Remove module prefix if present (e.g., "_:3D Coverflow" becomes "3D Coverflow")
+        if (strpos($layout, '_:') === 0) {
+            $layout = substr($layout, 2);
+        }
 
         // Loop
         if ($params->get('loop')) {
@@ -227,7 +232,7 @@ class Dispatcher extends AbstractModuleDispatcher
 
         // Specific effect for layout
         switch ($layout) {
-            case '3d-coverflow':
+            case '3D Coverflow':
                 $config['effect']          = 'coverflow';
                 $config['coverflowEffect'] = [
                     'rotate'       => 50,
@@ -237,7 +242,7 @@ class Dispatcher extends AbstractModuleDispatcher
                     'slideShadows' => true,
                 ];
                 break;
-            case '3d-cube':
+            case '3D Cube':
                 $config['effect']     = 'cube';
                 $config['cubeEffect'] = [
                     'shadow'       => true,
@@ -246,13 +251,13 @@ class Dispatcher extends AbstractModuleDispatcher
                     'shadowScale'  => 0.94,
                 ];
                 break;
-            case '3d-flip':
+            case '3D Flip':
                 $config['effect'] = 'flip';
                 break;
-            case 'fade':
+            case 'Fade':
                 $config['effect'] = 'fade';
                 break;
-            case 'responsive-breakpoints':
+            case 'Responsive Breakpoints':
                 // Responsive breakpoints configuration
                 $config['breakpoints'] = [
                     320 => [
