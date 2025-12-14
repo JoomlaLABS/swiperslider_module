@@ -81,6 +81,18 @@ if (!empty($inlineStyles)) {
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
+// Add 3D Coverflow specific effect configuration
+$config = json_decode($swiperConfig, true);
+$config['effect'] = 'coverflow';
+$config['coverflowEffect'] = [
+    'rotate'       => 50,
+    'stretch'      => 0,
+    'depth'        => 100,
+    'modifier'     => 1,
+    'slideShadows' => true,
+];
+$swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
+
 ?>
 
 <!-- Swiper -->

@@ -77,8 +77,6 @@ $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection()
 
 // Thumbs configuration
 $thumbsConfig = [
-    'spaceBetween' => (int) $params->get('spaceBetween', 10),
-    'slidesPerView' => $params->get('slidesPerView', 4),
     'freeMode' => true,
     'watchSlidesVisibility' => true,
     'watchSlidesProgress' => true,
@@ -86,6 +84,20 @@ $thumbsConfig = [
 
 if ($params->get('loop')) {
     $thumbsConfig['loop'] = true;
+}
+
+if ($params->get('spaceBetween')) {
+    $thumbsConfig['spaceBetween'] = (int) $params->get('spaceBetween');
+}
+
+if ($params->get('slidesPerView') != 1) {
+    $slidesPerView = $params->get('slidesPerView');
+    // Handle 'auto' value (remove quotes if present)
+    if ($slidesPerView == "'auto'") {
+        $thumbsConfig['slidesPerView'] = 'auto';
+    } else {
+        $thumbsConfig['slidesPerView'] = (int) $slidesPerView;
+    }
 }
 
 ?>

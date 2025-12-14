@@ -81,6 +81,24 @@ if (!empty($inlineStyles)) {
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
+// Add Responsive Breakpoints configuration
+$config = json_decode($swiperConfig, true);
+$config['breakpoints'] = [
+    640 => [
+        'slidesPerView' => 2,
+        'spaceBetween'  => 20,
+    ],
+    768 => [
+        'slidesPerView' => 4,
+        'spaceBetween'  => 40,
+    ],
+    1024 => [
+        'slidesPerView' => 5,
+        'spaceBetween'  => 50,
+    ],
+];
+$swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
+
 ?>
 
 <!-- Swiper -->

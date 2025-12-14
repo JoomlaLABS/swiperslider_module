@@ -81,6 +81,17 @@ if (!empty($inlineStyles)) {
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
+// Add 3D Cube specific effect configuration
+$config = json_decode($swiperConfig, true);
+$config['effect'] = 'cube';
+$config['cubeEffect'] = [
+    'shadow'       => true,
+    'slideShadows' => true,
+    'shadowOffset' => 20,
+    'shadowScale'  => 0.94,
+];
+$swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
+
 ?>
 
 <!-- Swiper -->

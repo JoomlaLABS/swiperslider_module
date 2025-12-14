@@ -230,52 +230,6 @@ class Dispatcher extends AbstractModuleDispatcher
             $config['lazy'] = true;
         }
 
-        // Specific effect for layout
-        switch ($layout) {
-            case '3D Coverflow':
-                $config['effect']          = 'coverflow';
-                $config['coverflowEffect'] = [
-                    'rotate'       => 50,
-                    'stretch'      => 0,
-                    'depth'        => 100,
-                    'modifier'     => 1,
-                    'slideShadows' => true,
-                ];
-                break;
-            case '3D Cube':
-                $config['effect']     = 'cube';
-                $config['cubeEffect'] = [
-                    'shadow'       => true,
-                    'slideShadows' => true,
-                    'shadowOffset' => 20,
-                    'shadowScale'  => 0.94,
-                ];
-                break;
-            case '3D Flip':
-                $config['effect'] = 'flip';
-                break;
-            case 'Fade':
-                $config['effect'] = 'fade';
-                break;
-            case 'Responsive Breakpoints':
-                // Responsive breakpoints configuration
-                $config['breakpoints'] = [
-                    320 => [
-                        'slidesPerView' => 1,
-                        'spaceBetween'  => 10,
-                    ],
-                    480 => [
-                        'slidesPerView' => 2,
-                        'spaceBetween'  => 20,
-                    ],
-                    640 => [
-                        'slidesPerView' => 3,
-                        'spaceBetween'  => 30,
-                    ],
-                ];
-                break;
-        }
-
         // Pagination
         if ($params->get('pagination')) {
             $paginationConfig = [

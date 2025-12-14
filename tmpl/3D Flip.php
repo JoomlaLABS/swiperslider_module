@@ -81,6 +81,11 @@ if (!empty($inlineStyles)) {
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
+// Add 3D Flip specific effect configuration
+$config = json_decode($swiperConfig, true);
+$config['effect'] = 'flip';
+$swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
+
 ?>
 
 <!-- Swiper -->
