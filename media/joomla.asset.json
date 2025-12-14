@@ -2,48 +2,54 @@
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "mod_joomlalabs_swiperslider_module",
   "version": "2.0.0",
-  "description": "Swiper Slider Module Assets",
+  "description": "Swiper Slider Module Assets - Documentation only (assets are registered programmatically in Dispatcher)",
   "license": "GPL-2.0-or-later",
   "assets": [
     {
-      "name": "swiper.bundle",
+      "name": "swiper.bundle.css",
       "type": "style",
-      "uri": "mod_joomlalabs_swiperslider_module/css/swiper-bundle.min.css"
+      "uri": "mod_joomlalabs_swiperslider_module/css/swiper-bundle.min.css",
+      "description": "Core Swiper CSS library - Always loaded"
     },
     {
       "name": "swiper.style",
       "type": "style",
       "uri": "mod_joomlalabs_swiperslider_module/css/swiper-style.css",
-      "dependencies": ["swiper.bundle"]
+      "dependencies": ["swiper.bundle.css"],
+      "description": "Custom module styles - Always loaded"
     },
     {
       "name": "swiper.pagination-bullet",
       "type": "style",
       "uri": "mod_joomlalabs_swiperslider_module/css/swiper-pagination-bullet.css",
-      "dependencies": ["swiper.bundle"]
+      "dependencies": ["swiper.bundle.css"],
+      "description": "Numbered bullet pagination styles - Loaded conditionally when pagination type is 'bullet'"
     },
     {
       "name": "swiper.thumbs",
       "type": "style",
       "uri": "mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css",
-      "dependencies": ["swiper.bundle"]
+      "dependencies": ["swiper.bundle.css"],
+      "description": "Thumbs gallery styles - Loaded conditionally for 'thumbs-gallery' layout"
     },
     {
-      "name": "swiper.bundle",
+      "name": "swiper.bundle.js",
       "type": "script",
       "uri": "mod_joomlalabs_swiperslider_module/js/swiper-bundle.min.js",
       "attributes": {
         "defer": true
-      }
+      },
+      "description": "Core Swiper JS library - Always loaded"
     },
     {
       "name": "swiper.init",
       "type": "script",
       "uri": "mod_joomlalabs_swiperslider_module/js/swiper-init.js",
-      "dependencies": ["swiper.bundle"],
+      "dependencies": ["swiper.bundle.js"],
       "attributes": {
         "defer": true
-      }
+      },
+      "description": "Module initialization script - Always loaded"
     }
   ]
 }
