@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
 	<name>MOD_JOOMLALABS_SWIPERSLIDER_MODULE</name>
-	<creationDate>22/08/2020</creationDate>
+	<creationDate>14/12/2025</creationDate>
 	<author>Joomla!LABS</author>
 	<authorEmail>info@joomlalabs.com</authorEmail>
 	<authorUrl>https://joomlalabs.com</authorUrl>
-	<copyright>Copyright (C) 2015 - 2020 Joomla!LABS. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2015 - 2025 Joomla!LABS. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.1.0</version>
+	<version>2.0.0</version>
 	<description>MOD_JOOMLALABS_SWIPERSLIDER_MODULE_XML_DESCRIPTION</description>
+	<namespace path="src">Joomla\Module\JoomlalabsSwiperslider</namespace>
 
 	<files>
-		<filename module="mod_joomlalabs_swiperslider_module">mod_joomlalabs_swiperslider_module.php</filename>
+		<folder module="mod_joomlalabs_swiperslider_module">services</folder>
+		<folder>src</folder>
 		<folder>tmpl</folder>
-		<folder>language</folder>
-		<folder>media</folder>
 		<folder>subform</folder>
-		<filename>mod_joomlalabs_swiperslider_module.xml</filename>
 	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/mod_joomlalabs_swiperslider_module.ini</language>
+		<language tag="en-GB">language/en-GB/mod_joomlalabs_swiperslider_module.sys.ini</language>
+	</languages>
 
 	<media destination="mod_joomlalabs_swiperslider_module" folder="media">
 		<folder>css</folder>

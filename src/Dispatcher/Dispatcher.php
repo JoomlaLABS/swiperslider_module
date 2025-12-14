@@ -1,0 +1,295 @@
+<?php
+
+/**
+ * @package     Joomla.Site
+ * @subpackage  mod_joomlalabs_swiperslider_module
+ *
+ * @copyright   (C) 2015 - 2025 Joomla!LABS. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Module\JoomlalabsSwiperslider\Site\Dispatcher;
+
+use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
+use Joomla\CMS\Factory;
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
+
+/**
+ * Dispatcher class for mod_joomlalabs_swiperslider_module
+ *
+ * @since  2.0.0
+ */
+class Dispatcher extends AbstractModuleDispatcher
+{
+    /**
+     * Returns the layout data.
+     *
+     * @return  array
+     *
+     * @since   2.0.0
+     */
+    protected function getLayoutData(): array
+    {
+        $data = parent::getLayoutData();
+        
+        // Recupera Web Asset Manager
+        /** @var \Joomla\CMS\WebAsset\WebAssetManager $wa */
+        $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+        
+        // Carica assets base
+        $wa->useStyle('swiper.bundle')
+           ->useStyle('swiper.style')
+           ->useScript('swiper.bundle')
+           ->useScript('swiper.init');
+        
+        // Carica CSS specifico per pagination bullet se necessario
+        if ($data['params']->get('pagination') == 'bullet') {
+            $wa->useStyle('swiper.pagination-bullet');
+        }
+        
+        // Carica CSS thumbs per il layout Thumbs Gallery
+        $layout = $data['params']->get('layout', 'default');
+        if ($layout == 'thumbs-gallery') {
+            $wa->useStyle('swiper.thumbs');
+        }
+        
+        // Prepara configurazione Swiper come JSON
+        $swiperConfig = $this->prepareSwiperConfig($data['params']);
+        $data['swiperConfig'] = json_encode($swiperConfig, JSON_UNESCAPED_SLASHES);
+        
+        // Genera l'array delle immagini basato sulla sorgente selezionata
+        $params = $data['params'];
+        $allImagesUrl = [];
+        
+        if ($params->get('mediaSource') == 'folder') {
+            // Carica immagini da cartella
+            $slidesFolder = JPATH_ROOT . '/images/' . $params->get('slidesFolder');
+            
+            if (is_dir($slidesFolder)) {
+                $extensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG'];
+                
+                foreach ($extensions as $ext) {
+                    $files = glob($slidesFolder . '/*.' . $ext);
+                    
+                    if ($files) {
+                        foreach ($files as $file) {
+                            $allImagesUrl[] = 'images/' . $params->get('slidesFolder') . '/' . basename($file);
+                        }
+                    }
+                }
+            } else {
+                Factory::getApplication()->enqueueMessage(
+                    'Swiper Slider: La cartella specificata non esiste',
+                    'warning'
+                );
+            }
+        } elseif ($params->get('mediaSource') == 'imageList') {
+            // Carica immagini da lista repeatable
+            $repeatableFields = $params->get('repeatable_fields');
+            
+            if (is_array($repeatableFields)) {
+                foreach ($repeatableFields as $slide) {
+                    if (isset($slide->image)) {
+                        $allImagesUrl[] = $slide->image;
+                    }
+                }
+            }
+        } elseif ($params->get('mediaSource') == 'csvList') {
+            // Carica immagini da CSV
+            $csvList = $params->get('csvList', '');
+            
+            if (!empty($csvList)) {
+                $allImagesUrl = array_map('trim', explode(',', $csvList));
+            }
+        }
+        
+        $data['allImagesUrl'] = $allImagesUrl;
+        
+        return $data;
+    }
+    
+    /**
+     * Prepare Swiper configuration array from module parameters
+     *
+     * @param   \Joomla\Registry\Registry  $params  Module parameters
+     *
+     * @return  array  Swiper configuration
+     *
+     * @since   2.0.0
+     */
+    private function prepareSwiperConfig($params): array
+    {
+        $config = [
+            'direction' => $params->get('direction', 'horizontal'),
+        ];
+        
+        // Get current layout
+        $layout = $params->get('layout', 'default');
+        
+        // Loop
+        if ($params->get('loop')) {
+            $config['loop'] = true;
+        }
+        
+        // Slides per view
+        $slidesPerView = $params->get('slidesPerView', 1);
+        if ($slidesPerView != 1) {
+            // Se è 'auto', lo lasciamo come stringa
+            if ($slidesPerView == "'auto'") {
+                $config['slidesPerView'] = 'auto';
+            } else {
+                $config['slidesPerView'] = (int) $slidesPerView;
+            }
+        }
+        
+        // Slides per column (legacy, potrebbe non essere più usato)
+        $slidesPerColumn = $params->get('slidesPerColumn', 1);
+        if ($slidesPerColumn > 1) {
+            $config['slidesPerColumn'] = (int) $slidesPerColumn;
+        }
+        
+        // Auto height
+        if ($params->get('autoHeight')) {
+            $config['autoHeight'] = true;
+        }
+        
+        // Space between
+        if ($params->get('spaceBetween')) {
+            $config['spaceBetween'] = (int) $params->get('spaceBetween');
+        }
+        
+        // Centered slides
+        if ($params->get('centeredSlides')) {
+            $config['centeredSlides'] = true;
+        }
+        
+        // Free mode
+        if ($params->get('freeMode')) {
+            $config['freeMode'] = true;
+        }
+        
+        // Autoplay
+        if ($params->get('autoplay')) {
+            $config['autoplay'] = [
+                'delay' => (int) $params->get('autoplayDelay', 2500),
+                'disableOnInteraction' => $params->get('disableOnInteraction', 'false') === 'true',
+            ];
+        }
+        
+        // Zoom
+        if ($params->get('zoom')) {
+            $config['zoom'] = true;
+        }
+        
+        // Keyboard
+        if ($params->get('keyboard')) {
+            $config['keyboard'] = [
+                'enabled' => true,
+            ];
+        }
+        
+        // Mousewheel
+        if ($params->get('mousewheel')) {
+            $config['mousewheel'] = true;
+        }
+        
+        // Lazy loading (se abilitato)
+        if ($params->get('lazy')) {
+            $config['lazy'] = true;
+        }
+        
+        // Effect specifico per layout
+        switch ($layout) {
+            case '3d-coverflow':
+                $config['effect'] = 'coverflow';
+                $config['coverflowEffect'] = [
+                    'rotate' => 50,
+                    'stretch' => 0,
+                    'depth' => 100,
+                    'modifier' => 1,
+                    'slideShadows' => true,
+                ];
+                break;
+            case '3d-cube':
+                $config['effect'] = 'cube';
+                $config['cubeEffect'] = [
+                    'shadow' => true,
+                    'slideShadows' => true,
+                    'shadowOffset' => 20,
+                    'shadowScale' => 0.94,
+                ];
+                break;
+            case '3d-flip':
+                $config['effect'] = 'flip';
+                break;
+            case 'fade':
+                $config['effect'] = 'fade';
+                break;
+            case 'responsive-breakpoints':
+                // Responsive breakpoints configuration
+                $config['breakpoints'] = [
+                    320 => [
+                        'slidesPerView' => 1,
+                        'spaceBetween' => 10
+                    ],
+                    480 => [
+                        'slidesPerView' => 2,
+                        'spaceBetween' => 20
+                    ],
+                    640 => [
+                        'slidesPerView' => 3,
+                        'spaceBetween' => 30
+                    ]
+                ];
+                break;
+        }
+        
+        // Pagination
+        if ($params->get('pagination')) {
+            $paginationConfig = [
+                'el' => '.swiper-pagination',
+                'clickable' => true,
+            ];
+            
+            switch ($params->get('pagination')) {
+                case 'dynamicBullets':
+                    $paginationConfig['dynamicBullets'] = true;
+                    break;
+                case 'progressbar':
+                    $paginationConfig['type'] = 'progressbar';
+                    break;
+                case 'fraction':
+                    $paginationConfig['type'] = 'fraction';
+                    break;
+                case 'bullet':
+                    // Per bullet numerato, dovremmo usare una funzione JavaScript
+                    // Ma dato che non possiamo passare funzioni in JSON,
+                    // gestiremo questo caso nel file swiper-init.js
+                    $paginationConfig['renderBullet'] = 'numbered';
+                    break;
+            }
+            
+            $config['pagination'] = $paginationConfig;
+        }
+        
+        // Navigation
+        if ($params->get('navigation')) {
+            $config['navigation'] = [
+                'nextEl' => '.swiper-button-next',
+                'prevEl' => '.swiper-button-prev',
+            ];
+        }
+        
+        // Scrollbar
+        if ($params->get('scrollbar')) {
+            $config['scrollbar'] = [
+                'el' => '.swiper-scrollbar',
+            ];
+        }
+        
+        return $config;
+    }
+}
