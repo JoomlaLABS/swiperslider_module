@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mod_joomlalabs_swiperslider_module" default="dist" basedir=".">
+
+	<property name="VERSION" value="2.0.0"/>
+	
+	<tstamp>
+		<format property="DATE" pattern="%d-%m-%Y" />
+	</tstamp>
+	
+	<property name="build" value="_build" />
+	<property name="dist" value="_dist" />
+	<property name="filename" value="mod_joomlalabs_swiperslider_module_v${VERSION}_j6.zip" />
+
+
+	<target name="init" depends="clean">
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
+	</target>
+	
+	
+	<target name="replacemodule">
+		<copy todir="${build}">
+			<fileset dir=".">
+				<include name="services/**" />
+				<include name="src/**" />
+				<include name="tmpl/**" />
+				<include name="subform/**" />
+				<include name="language/**" />
+				<include name="media/**" />
+				<include name="mod_joomlalabs_swiperslider_module.xml" />
+			</fileset>
+			<filterchain>
+				<replacetokens>
+					<token key="version" value="${VERSION}" />
+					<token key="date" value="${DATE}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+	</target>
+
+	
+	<target name="dist" depends="init, replacemodule">
+		<zip destfile="${dist}/${filename}">
+			<fileset dir="${build}" >
+				<include name="services/**" />
+				<include name="src/**" />
+				<include name="tmpl/**" />
+				<include name="subform/**" />
+				<include name="language/**" />
+				<include name="media/**" />
+				<include name="mod_joomlalabs_swiperslider_module.xml" />
+			</fileset>
+		</zip>
+	</target>
+	
+
+
+	<target name="clean" description="clean up">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>

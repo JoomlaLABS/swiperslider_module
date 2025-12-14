@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
 	<name>MOD_JOOMLALABS_SWIPERSLIDER_MODULE</name>
-	<creationDate>14/12/2025</creationDate>
+	<creationDate>@date@</creationDate>
 	<author>Joomla!LABS</author>
 	<authorEmail>info@joomlalabs.com</authorEmail>
 	<authorUrl>https://joomlalabs.com</authorUrl>
 	<copyright>Copyright (C) 2015 - 2025 Joomla!LABS. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>2.0.0</version>
+	<version>@version@</version>
 	<description>MOD_JOOMLALABS_SWIPERSLIDER_MODULE_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Module\JoomlalabsSwiperslider</namespace>
 
