@@ -8,7 +8,7 @@
  * @copyright   (C) 2015 - 2025 Joomla!LABS. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @link        https://joomlalabs.com
- * @since       1.0.0
+ * @since       2.1.0
  */
 
 // phpcs:disable PSR1.Files.SideEffects
@@ -59,34 +59,34 @@ if (($params->get('slidesPerColumn')) > 1) {
 
 if (!empty($inlineStyles)) {
     $wa = $document->getWebAssetManager();
-    $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-custom-' . $module->id]);
+    $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-creative-custom-' . $module->id]);
 }
 
 // Determine RTL direction
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
-// Add Responsive Breakpoints configuration
+// Add Creative specific effect configuration
 $config = json_decode($swiperConfig, true);
-$config['breakpoints'] = [
-    640 => [
-        'slidesPerView' => 2,
-        'spaceBetween'  => 20,
+$config['effect'] = 'creative';
+$config['grabCursor'] = true;
+$config['creativeEffect'] = [
+    'prev' => [
+        'shadow'    => true,
+        'translate' => ['-125%', 0, -800],
+        'rotate'    => [0, 0, -90],
     ],
-    768 => [
-        'slidesPerView' => 4,
-        'spaceBetween'  => 40,
-    ],
-    1024 => [
-        'slidesPerView' => 5,
-        'spaceBetween'  => 50,
+    'next' => [
+        'shadow'    => true,
+        'translate' => ['125%', 0, -800],
+        'rotate'    => [0, 0, 90],
     ],
 ];
 $swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
 
 ?>
 
-<!-- Swiper -->
+<!-- Swiper Creative -->
 <div id="swiper-<?php echo $module->id; ?>" 
      class="swiper" 
      data-swiper-config="<?php echo htmlspecialchars($swiperConfig, ENT_QUOTES, 'UTF-8'); ?>"
@@ -98,6 +98,7 @@ $swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
                 <div class="swiper-slide">
                     <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
+                         loading="lazy"
                          alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
@@ -108,6 +109,7 @@ $swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
                     <?php endif; ?>
                     
                     <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
+                         loading="lazy"
                          alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     
                     <?php if ($params->get('zoom')): ?>

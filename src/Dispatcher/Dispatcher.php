@@ -184,6 +184,11 @@ class Dispatcher extends AbstractModuleDispatcher
             $config['loop'] = true;
         }
 
+        // Rewind
+        if ($params->get('rewind')) {
+            $config['rewind'] = true;
+        }
+
         // Slides per view
         $slidesPerView = $params->get('slidesPerView', 1);
         if ($slidesPerView != 1) {
@@ -195,10 +200,12 @@ class Dispatcher extends AbstractModuleDispatcher
             }
         }
 
-        // Slides per column (legacy, may not be used anymore)
+        // Grid (replaces slidesPerColumn in Swiper 7+)
         $slidesPerColumn = $params->get('slidesPerColumn', 1);
         if ($slidesPerColumn > 1) {
-            $config['slidesPerColumn'] = (int) $slidesPerColumn;
+            $config['grid'] = [
+                'rows' => (int) $slidesPerColumn,
+            ];
         }
 
         // Auto height
@@ -244,11 +251,6 @@ class Dispatcher extends AbstractModuleDispatcher
         // Mousewheel
         if ($params->get('mousewheel')) {
             $config['mousewheel'] = true;
-        }
-
-        // Lazy loading (if enabled)
-        if ($params->get('lazy')) {
-            $config['lazy'] = true;
         }
 
         // Pagination

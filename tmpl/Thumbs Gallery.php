@@ -50,23 +50,6 @@ if ($params->get('slidesPerView') == "'auto'") {
     ';
 }
 
-if ($params->get('lazy')) {
-    $inlineStyles .= '
-        #swiper-gallery-top-' . $module->id . ' .swiper-slide img,
-        #swiper-gallery-thumbs-' . $module->id . ' .swiper-slide img {
-            width: auto;
-            max-height: 100%;
-            -ms-transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-    ';
-}
-
 if (!empty($inlineStyles)) {
     $wa = $document->getWebAssetManager();
     $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-thumbs-custom-' . $module->id]);
@@ -117,7 +100,7 @@ if ($params->get('slidesPerView') != 1) {
 
 <!-- Swiper Gallery Top -->
 <div id="swiper-gallery-top-<?php echo $module->id; ?>" 
-     class="swiper-container gallery-top" 
+     class="swiper gallery-top" 
      data-swiper-config="<?php echo htmlspecialchars($swiperConfig, ENT_QUOTES, 'UTF-8'); ?>"
      <?php if ($isRtl): ?> dir="rtl"<?php endif; ?>>
      
@@ -166,7 +149,7 @@ if ($params->get('slidesPerView') != 1) {
 
 <!-- Swiper Gallery Thumbs -->
 <div id="swiper-gallery-thumbs-<?php echo $module->id; ?>" 
-     class="swiper-container gallery-thumbs"
+     class="swiper gallery-thumbs"
      data-swiper-config="<?php echo htmlspecialchars(json_encode($thumbsConfig, JSON_UNESCAPED_SLASHES), ENT_QUOTES, 'UTF-8'); ?>"
      data-swiper-thumbs-for="swiper-gallery-top-<?php echo $module->id; ?>"
      <?php if ($isRtl): ?> dir="rtl"<?php endif; ?>>

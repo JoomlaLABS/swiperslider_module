@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="mod_joomlalabs_swiperslider_module" default="dist" basedir=".">
 
-	<property name="VERSION" value="2.0.0"/>
+	<property name="VERSION" value="2.1.0"/>
 	
 	<tstamp>
 		<format property="DATE" pattern="%d-%m-%Y" />

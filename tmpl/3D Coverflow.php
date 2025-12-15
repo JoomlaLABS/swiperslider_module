@@ -57,22 +57,6 @@ if (($params->get('slidesPerColumn')) > 1) {
     ';
 }
 
-if ($params->get('lazy')) {
-    $inlineStyles .= '
-        #swiper-' . $module->id . ' .swiper-slide img {
-            width: auto;
-            max-height: 100%;
-            -ms-transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-    ';
-}
-
 if (!empty($inlineStyles)) {
     $wa = $document->getWebAssetManager();
     $wa->addInlineStyle($inlineStyles, ['name' => 'swiper-custom-' . $module->id]);
@@ -98,7 +82,7 @@ $swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
 
 <!-- Swiper -->
 <div id="swiper-<?php echo $module->id; ?>" 
-     class="swiper-container" 
+     class="swiper" 
      data-swiper-config="<?php echo htmlspecialchars($swiperConfig, ENT_QUOTES, 'UTF-8'); ?>"
      <?php if ($isRtl): ?> dir="rtl"<?php endif; ?>>
      
