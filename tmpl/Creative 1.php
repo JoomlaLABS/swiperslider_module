@@ -66,20 +66,17 @@ if (!empty($inlineStyles)) {
 $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection() == 'rtl')) 
          || ($params->get('dir') == 'rtl');
 
-// Add Creative specific effect configuration
+// Add Creative 1 specific effect configuration
 $config = json_decode($swiperConfig, true);
 $config['effect'] = 'creative';
 $config['grabCursor'] = true;
 $config['creativeEffect'] = [
     'prev' => [
         'shadow'    => true,
-        'translate' => ['-125%', 0, -800],
-        'rotate'    => [0, 0, -90],
+        'translate' => [0, 0, -400],
     ],
     'next' => [
-        'shadow'    => true,
-        'translate' => ['125%', 0, -800],
-        'rotate'    => [0, 0, 90],
+        'translate' => ['100%', 0, 0],
     ],
 ];
 $swiperConfig = json_encode($config, JSON_UNESCAPED_SLASHES);
