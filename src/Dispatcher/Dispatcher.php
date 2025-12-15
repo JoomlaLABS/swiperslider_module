@@ -83,6 +83,14 @@ class Dispatcher extends AbstractModuleDispatcher
             $wa->useStyle('swiper.pagination-bullet');
         }
 
+        // Load autoplay progress CSS if needed
+        if ($data['params']->get('autoplay') && $data['params']->get('autoplayShowProgress')) {
+            $wa->useStyle('swiper.autoplay-progress');
+            $data['showAutoplayProgress'] = true;
+        } else {
+            $data['showAutoplayProgress'] = false;
+        }
+
         // Prepare Swiper configuration as JSON
         $swiperConfig         = $this->prepareSwiperConfig($data['params']);
         $data['swiperConfig'] = json_encode($swiperConfig, JSON_UNESCAPED_SLASHES);
@@ -234,6 +242,13 @@ class Dispatcher extends AbstractModuleDispatcher
                 'delay'                => (int) $params->get('autoplayDelay', 2500),
                 'disableOnInteraction' => $params->get('disableOnInteraction', 'false') === 'true',
             ];
+
+            // Autoplay progress circle
+            if ($params->get('autoplayShowProgress')) {
+                $config['_autoplayProgress'] = [
+                    'enabled' => true,
+                ];
+            }
         }
 
         // Zoom
@@ -325,6 +340,11 @@ class Dispatcher extends AbstractModuleDispatcher
         // Register CSS Pagination Bullet
         if (!$registry->exists('style', 'swiper.pagination-bullet')) {
             $wa->registerStyle('swiper.pagination-bullet', 'media/mod_joomlalabs_swiperslider_module/css/swiper-pagination-bullet.css', [], [], ['swiper.bundle']);
+        }
+
+        // Register CSS Autoplay Progress
+        if (!$registry->exists('style', 'swiper.autoplay-progress')) {
+            $wa->registerStyle('swiper.autoplay-progress', 'media/mod_joomlalabs_swiperslider_module/css/swiper-autoplay-progress.css', [], [], ['swiper.bundle']);
         }
 
         // Register JS Swiper Bundle

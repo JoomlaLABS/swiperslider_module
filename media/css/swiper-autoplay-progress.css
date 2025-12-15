@@ -1,0 +1,41 @@
+/**
+ * Joomla!LABS Swiper Slider Module - Autoplay Progress
+ * Circular progress indicator for autoplay countdown
+ * https://joomlalabs.com
+ *
+ * Copyright (C) 2015 - 2025 Joomla!LABS. All rights reserved.
+ *
+ * Released under GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since       2.1.0
+ */
+
+.autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color, #007aff);
+}
+
+.autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color, #007aff);
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+}

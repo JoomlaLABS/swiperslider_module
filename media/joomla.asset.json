@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "mod_joomlalabs_swiperslider_module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Swiper Slider Module Assets - Documentation only (assets are registered programmatically in Dispatcher)",
   "license": "GPL-2.0-or-later",
   "assets": [
@@ -31,6 +31,13 @@
       "uri": "mod_joomlalabs_swiperslider_module/css/swiper-thumbs.css",
       "dependencies": ["swiper.bundle.css"],
       "description": "Thumbs gallery styles - Loaded conditionally for 'thumbs-gallery' layout"
+    },
+    {
+      "name": "swiper.autoplay-progress",
+      "type": "style",
+      "uri": "mod_joomlalabs_swiperslider_module/css/swiper-autoplay-progress.css",
+      "dependencies": ["swiper.bundle.css"],
+      "description": "Autoplay progress indicator styles - Loaded conditionally when autoplay and show progress are enabled"
     },
     {
       "name": "swiper.bundle.js",

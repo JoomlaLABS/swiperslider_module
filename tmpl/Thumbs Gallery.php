@@ -145,6 +145,16 @@ if ($params->get('slidesPerView') != 1) {
         <!-- Scrollbar -->
         <div class="swiper-scrollbar"></div>
     <?php endif; ?>
+
+    <?php if ($showAutoplayProgress): ?>
+        <!-- Autoplay Progress -->
+        <div class="autoplay-progress">
+            <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span></span>
+        </div>
+    <?php endif; ?>
 </div>
 
 <!-- Swiper Gallery Thumbs -->

@@ -41,6 +41,23 @@ document.addEventListener('DOMContentLoaded', function() {
             // Parse the configuration from data attribute
             let config = JSON.parse(container.dataset.swiperConfig);
             
+            // Handle autoplay progress indicator
+            if (config._autoplayProgress && config._autoplayProgress.enabled) {
+                const progressCircle = container.querySelector('.autoplay-progress svg');
+                const progressContent = container.querySelector('.autoplay-progress span');
+                
+                if (progressCircle && progressContent) {
+                    config.on = config.on || {};
+                    config.on.autoplayTimeLeft = function(s, time, progress) {
+                        progressCircle.style.setProperty('--progress', 1 - progress);
+                        progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+                    };
+                }
+                
+                // Remove internal marker from config
+                delete config._autoplayProgress;
+            }
+            
             // Handle special case for numbered bullet pagination
             if (config.pagination && config.pagination.renderBullet === 'numbered') {
                 config.pagination.renderBullet = function (index, className) {
