@@ -28,6 +28,33 @@ use Joomla\CMS\Factory;
 class Dispatcher extends AbstractModuleDispatcher
 {
     /**
+     * Generate accessible alt text from image filename.
+     *
+     * Removes file extension, replaces underscores/hyphens with spaces,
+     * and capitalizes each word for better accessibility.
+     *
+     * @param string $imageUrl The image URL or path
+     *
+     * @return string Formatted alt text
+     *
+     * @since   2.0.0
+     */
+    public static function generateAltText(string $imageUrl): string
+    {
+        // Get filename without path
+        $filename = basename($imageUrl);
+        
+        // Remove extension
+        $nameWithoutExt = pathinfo($filename, PATHINFO_FILENAME);
+        
+        // Replace underscores and hyphens with spaces
+        $readable = str_replace(['_', '-'], ' ', $nameWithoutExt);
+        
+        // Capitalize each word
+        return ucwords(trim($readable));
+    }
+
+    /**
      * Returns the layout data.
      *
      * @return array

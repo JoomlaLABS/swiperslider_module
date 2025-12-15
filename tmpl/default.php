@@ -17,6 +17,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\Module\JoomlalabsSwiperslider\Site\Dispatcher\Dispatcher;
 
 /**
  * @var array  $allImagesUrl   Array of image URLs
@@ -95,7 +96,7 @@ $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection()
                 <div class="swiper-slide">
                     <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
-                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
+                         alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
             <?php else: ?>
@@ -105,7 +106,7 @@ $isRtl = (($params->get('dir') == 'global-config') && ($document->getDirection()
                     <?php endif; ?>
                     
                     <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
-                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
+                         alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     
                     <?php if ($params->get('zoom')): ?>
                         </div>

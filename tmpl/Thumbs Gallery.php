@@ -17,6 +17,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\Module\JoomlalabsSwiperslider\Site\Dispatcher\Dispatcher;
 
 /**
  * @var array  $allImagesUrl   Array of image URLs
@@ -126,7 +127,7 @@ if ($params->get('slidesPerView') != 1) {
                 <div class="swiper-slide">
                     <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
-                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
+                         alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
             <?php else: ?>
@@ -136,7 +137,7 @@ if ($params->get('slidesPerView') != 1) {
                     <?php endif; ?>
                     
                     <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
-                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
+                         alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     
                     <?php if ($params->get('zoom')): ?>
                         </div>
@@ -176,13 +177,13 @@ if ($params->get('slidesPerView') != 1) {
                 <div class="swiper-slide">
                     <img data-src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
                          class="swiper-lazy"
-                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
+                         alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                     <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                 </div>
             <?php else: ?>
                 <div class="swiper-slide">
                     <img src="<?php echo htmlspecialchars($imageUrl, ENT_QUOTES, 'UTF-8'); ?>" 
-                         alt="<?php echo htmlspecialchars(basename($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
+                         alt="<?php echo htmlspecialchars(Dispatcher::generateAltText($imageUrl), ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
