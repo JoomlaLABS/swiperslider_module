@@ -6,8 +6,8 @@
 ![GitHub release (latest by SemVer)](https://img.shields.io/github/downloads/JoomlaLABS/swiperslider_module/latest/total?style=for-the-badge&color=blue)
 ![GitHub release (latest by SemVer)](https://img.shields.io/github/v/release/JoomlaLABS/swiperslider_module?sort=semver&style=for-the-badge&color=blue)
 
-[![License](https://img.shields.io/badge/license-GPL%202.0%2B-blue.svg)](LICENSE)
-[![Joomla](https://img.shields.io/badge/Joomla-6.0%2B-blue.svg)](https://www.joomla.org)
+[![License](https://img.shields.io/badge/license-GPL%202.0%2B-green.svg)](LICENSE)
+[![Joomla](https://img.shields.io/badge/Joomla!-6.0+-1A3867?logo=joomla&logoColor=white)]()
 
 ## Description
 
