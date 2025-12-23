@@ -9,13 +9,13 @@
 [![License](https://img.shields.io/badge/license-GPL%202.0%2B-green.svg)](LICENSE)
 [![Joomla](https://img.shields.io/badge/Joomla!-6.0+-1A3867?logo=joomla&logoColor=white)]()
 
-## Description
+## 📖 Description
 
 **Joomla!LABS Swiper Slider Module** is a powerful and modern slider module for Joomla! 6, built on the popular [Swiper.js](https://swiperjs.com) framework. It provides a feature-rich, mobile-friendly, and hardware-accelerated slider solution with extensive configuration options and multiple layout templates.
 
 Perfect for creating image galleries, carousels, content sliders, and advanced presentation layouts with smooth touch gestures and responsive behavior.
 
-## Key Features
+## ✨ Features
 
 ### 🎨 Multiple Layout Templates
 - **Default** - Classic horizontal/vertical slider
@@ -65,13 +65,13 @@ Perfect for creating image galleries, carousels, content sliders, and advanced p
 - Secure output escaping
 - Optimized performance
 
-## Requirements
+## 📋 Requirements
 
 - **Joomla**: 6.0 or later
 - **PHP**: 8.1 or later
 - **Browser**: Modern browsers with JavaScript enabled
 
-## Installation
+## 📦 Installation
 
 1. Download the latest release from [GitHub Releases](https://github.com/JoomlaLABS/swiperslider_module/releases)
 2. In Joomla Administrator, go to **System → Extensions → Install**
@@ -83,12 +83,14 @@ Perfect for creating image galleries, carousels, content sliders, and advanced p
 ⚠️ **Important**: Version 2.0.0 includes breaking changes for Joomla 6 compatibility.
 
 When upgrading from v1.x:
-1. **Backup your site** before upgrading
-2. Your module settings will be preserved
-3. Verify all layouts work correctly after upgrade
-4. Review the [Changelog](#changelog) for details
+1. **Backup** your site and database
+2. **Note** your current module settings (But your module settings will be preserved)
+3. **Install** v2.0 (it will upgrade automatically)
+4. **Verify** all layouts work correctly after upgrade
+5. **Test** thoroughly on your staging site first
+6. **Review** the [Changelog](#-changelog) for details
 
-## Configuration
+## ⚙️ Configuration
 
 After installation, create or edit a module instance:
 
@@ -118,7 +120,7 @@ After installation, create or edit a module instance:
    - Caching settings
    - Custom CSS
 
-## Usage Examples
+## 💡 Usage
 
 ### Basic Image Slider
 
@@ -160,7 +162,7 @@ Autoplay: Yes
 Loop: Yes
 ```
 
-## Template Override
+## 🛠️ Template Override
 
 To customize the module output, you can create template overrides:
 
@@ -176,7 +178,7 @@ To customize the module output, you can create template overrides:
 
 3. Edit the copied file to customize the output
 
-## Screenshots
+## 📸 Screenshots
 
 ### Site Preview
 
@@ -196,7 +198,7 @@ To customize the module output, you can create template overrides:
 ![Configuration - Navigation](https://user-images.githubusercontent.com/906604/93740992-e1a82180-fbeb-11ea-9089-6e667e8e2280.png)
 ![Configuration - Advanced](https://user-images.githubusercontent.com/906604/93741313-7ca0fb80-fbec-11ea-8774-2e4e4f9da3eb.png)
 
-## Changelog
+## 📋 Changelog
 
 ### [2.0.0] - 2025-12-14
 
@@ -244,7 +246,7 @@ To customize the module output, you can create template overrides:
 
 - Initial Joomla 4 release
 
-## Credits
+## 🙏 Credits
 
 This module is built using:
 <a href="https://swiperjs.com" target="_blank"><img src="https://swiperjs.com/images/swiper-logo.svg" width="12px" alt="Swiper - The Most Modern Mobile Touch Slider" /> Swiper</a>
