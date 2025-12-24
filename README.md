@@ -331,7 +331,6 @@ Need help? We're here for you!
 - 🐛 **Found a bug?** [Open an issue](https://github.com/JoomlaLABS/swiperslider_module/issues/new?labels=bug&template=bug_report.md)
 - 💡 **Have a feature request?** [Open an issue](https://github.com/JoomlaLABS/swiperslider_module/issues/new?labels=enhancement&template=feature_request.md)
 - ❓ **Questions?** [Start a discussion](https://github.com/JoomlaLABS/swiperslider_module/discussions)
-- 📧 **Direct contact:** [Razzo1987@gmail.com](mailto:Razzo1987@gmail.com)
 
 ## 💝 Donate
 
