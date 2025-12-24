@@ -204,6 +204,48 @@ To customize the module output, you can create template overrides:
 
 ## 📋 Changelog
 
+### [2.1.0] - 2025-12-24
+
+#### Added
+- **Swiper 12 Support**: Upgraded from Swiper 6.2.0 to 12.0, bringing modern features and improvements
+- **7 New Layout Templates**:
+  - **Creative 1**: Scale and rotate effect with perspective
+  - **Creative 2**: Depth effect with 3D rotation
+  - **Creative 3**: Flip effect with Z-axis rotation
+  - **Creative 4**: Cards stack with sliding transition
+  - **Creative 5**: Custom creative effect with unique animation
+  - **Creative 6**: Progressive rotate effect
+  - **Cards**: Apple-like cards effect with smooth transitions
+- **Accessibility Improvements**:
+  - New `generateAltText()` method for automatic alt text generation from filenames
+  - Better screen reader support for image galleries
+  - Semantic HTML improvements
+- **Autoplay Progress Indicator**: Visual circular progress bar showing autoplay countdown
+- **Rewind Mode**: Option to rewind to first slide at the end instead of looping
+- **Native Lazy Loading**: Browser-native lazy loading with `loading="lazy"` attribute
+- **Build System Enhancements**:
+  - PHP-CS-Fixer integration for automated code style management
+  - New build targets: `phpcs-fix` and `phpcs-check` for code quality
+  - Enhanced build system with code style verification
+  - Improved build.xml structure with descriptive Italian comments
+
+#### Changed
+- **Swiper CSS Class Update**: Migrated from `.swiper-container` to `.swiper` (Swiper 8+ standard)
+- Updated all template layouts to use new Swiper 12 API
+- Improved autoplay configuration with progress indicator integration
+- Enhanced image alt text generation for better accessibility
+- Build system restructured following modern Ant best practices
+- Separated `build` (with checks) and `dist` (fast, no checks) targets
+
+#### Removed
+- Deprecated lazy loading option (replaced with native browser lazy loading)
+- Old Swiper 6.2.0 bundle files
+
+#### Fixed
+- Build process now properly validates code style before packaging
+- Improved error handling in build system
+- Better compatibility with modern browsers
+
 ### [2.0.0] - 2025-12-14
 
 #### Added
