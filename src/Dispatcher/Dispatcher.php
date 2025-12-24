@@ -43,13 +43,13 @@ class Dispatcher extends AbstractModuleDispatcher
     {
         // Get filename without path
         $filename = basename($imageUrl);
-        
+
         // Remove extension
         $nameWithoutExt = pathinfo($filename, PATHINFO_FILENAME);
-        
+
         // Replace underscores and hyphens with spaces
         $readable = str_replace(['_', '-'], ' ', $nameWithoutExt);
-        
+
         // Capitalize each word
         return ucwords(trim($readable));
     }
