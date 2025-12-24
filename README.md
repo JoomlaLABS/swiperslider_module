@@ -7,11 +7,13 @@
 ![GitHub release (latest by SemVer)](https://img.shields.io/github/v/release/JoomlaLABS/swiperslider_module?sort=semver&style=for-the-badge&color=blue)
 
 [![License](https://img.shields.io/badge/license-GPL%202.0%2B-green.svg)](LICENSE)
-[![Joomla](https://img.shields.io/badge/Joomla!-6.0+-1A3867?logo=joomla&logoColor=white)]()
+[![Joomla 4.x](https://img.shields.io/badge/Joomla!-4.x-1A3867?logo=joomla&logoColor=white)]()
+[![Joomla 5.x](https://img.shields.io/badge/Joomla!-5.x-1A3867?logo=joomla&logoColor=white)]()
+[![Joomla 6.0+](https://img.shields.io/badge/Joomla!-6.0+-1A3867?logo=joomla&logoColor=white)]()
 
 ## 📖 Description
 
-**Joomla!LABS Swiper Slider Module** is a powerful and modern slider module for Joomla! 6, built on the popular [Swiper.js](https://swiperjs.com) framework. It provides a feature-rich, mobile-friendly, and hardware-accelerated slider solution with extensive configuration options and multiple layout templates.
+**Joomla!LABS Swiper Slider Module** is a powerful and modern slider module for Joomla!, built on the popular [Swiper.js](https://swiperjs.com) framework. It provides a feature-rich, mobile-friendly, and hardware-accelerated slider solution with extensive configuration options and multiple layout templates.
 
 Perfect for creating image galleries, carousels, content sliders, and advanced presentation layouts with smooth touch gestures and responsive behavior.
 
@@ -67,9 +69,11 @@ Perfect for creating image galleries, carousels, content sliders, and advanced p
 
 ## 📋 Requirements
 
-- **Joomla**: 6.0 or later
-- **PHP**: 8.1 or later
-- **Browser**: Modern browsers with JavaScript enabled
+| Software | Minimum | Recommended |
+|----------|---------|-------------|
+| **Joomla!** | 4.x | 6.0+ |
+| **PHP** | 8.1+ | 8.2 or 8.3 |
+| **Browser** | Modern browsers | Chrome 90+, Firefox 88+, Safari 14+, Edge 90+ |
 
 ## 📦 Installation
 

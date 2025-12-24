@@ -1,62 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="mod_joomlalabs_swiperslider_module" default="dist" basedir=".">
-
-	<property name="VERSION" value="2.1.0"/>
-	
-	<tstamp>
-		<format property="DATE" pattern="%d-%m-%Y" />
-	</tstamp>
-	
-	<property name="build" value="_build" />
-	<property name="dist" value="_dist" />
-	<property name="filename" value="mod_joomlalabs_swiperslider_module_v${VERSION}_j6.zip" />
-
-
-	<target name="init" depends="clean">
-		<mkdir dir="${build}" />
-		<mkdir dir="${dist}" />
-	</target>
-	
-	
-	<target name="replacemodule">
-		<copy todir="${build}">
-			<fileset dir=".">
-				<include name="services/**" />
-				<include name="src/**" />
-				<include name="tmpl/**" />
-				<include name="subform/**" />
-				<include name="language/**" />
-				<include name="media/**" />
-				<include name="mod_joomlalabs_swiperslider_module.xml" />
-			</fileset>
-			<filterchain>
-				<replacetokens>
-					<token key="version" value="${VERSION}" />
-					<token key="date" value="${DATE}" />
-				</replacetokens>
-			</filterchain>
-		</copy>
-	</target>
-
-	
-	<target name="dist" depends="init, replacemodule">
-		<zip destfile="${dist}/${filename}">
-			<fileset dir="${build}" >
-				<include name="services/**" />
-				<include name="src/**" />
-				<include name="tmpl/**" />
-				<include name="subform/**" />
-				<include name="language/**" />
-				<include name="media/**" />
-				<include name="mod_joomlalabs_swiperslider_module.xml" />
-			</fileset>
-		</zip>
-	</target>
-	
-
-
-	<target name="clean" description="clean up">
-		<delete dir="${build}" />
-		<delete dir="${dist}" />
-	</target>
+    
+    <!-- Project properties -->
+    <property name="VERSION" value="2.1.0"/>
+    <tstamp>
+        <format property="DATE" pattern="%d-%m-%Y"/>
+    </tstamp>
+    <property name="build" value="_build"/>
+    <property name="dist" value="_dist"/>
+    <property name="filename" value="mod_joomlalabs_swiperslider_module_v${VERSION}_j4_j5_j6.zip"/>
+    
+    <!-- Initialize build directories -->
+    <target name="init" depends="clean">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+    </target>
+    
+    <!-- Fix code style using PHP-CS-Fixer -->
+    <target name="phpcs-fix" description="Fix code style using PHP-CS-Fixer">
+        <echo message="Running PHP-CS-Fixer..." />
+        <exec executable="php">
+            <arg value="php-cs-fixer.phar" />
+            <arg value="fix" />
+            <arg value="--config=.php-cs-fixer.dist.php" />
+            <arg value="--verbose" />
+        </exec>
+        <echo message="PHP-CS-Fixer completed." />
+    </target>
+    
+    <!-- Check code style using PHP-CS-Fixer -->
+    <target name="phpcs-check" description="Check code style using PHP-CS-Fixer">
+        <echo message="Checking code style..." />
+        <exec executable="php">
+            <arg value="php-cs-fixer.phar" />
+            <arg value="fix" />
+            <arg value="--config=.php-cs-fixer.dist.php" />
+            <arg value="--dry-run" />
+            <arg value="--verbose" />
+            <arg value="--diff" />
+        </exec>
+        <echo message="Code style check completed." />
+    </target>
+    
+    <!-- Replace version and date tokens in module files -->
+    <target name="replacemodule">
+        <copy todir="${build}">
+            <fileset dir=".">
+                <include name="mod_joomlalabs_swiperslider_module.xml"/>
+                <include name="services/**"/>
+                <include name="src/**"/>
+                <include name="tmpl/**"/>
+                <include name="subform/**"/>
+                <include name="language/**"/>
+                <include name="media/**"/>
+            </fileset>
+            <filterchain>
+                <replacetokens>
+                    <token key="version" value="${VERSION}"/>
+                    <token key="date" value="${DATE}"/>
+                </replacetokens>
+            </filterchain>
+        </copy>
+    </target>
+    
+    <!-- Create distribution package (fast, no checks) -->
+    <target name="dist" depends="init, replacemodule">
+        <zip destfile="${dist}/${filename}">
+            <fileset dir="${build}">
+                <include name="mod_joomlalabs_swiperslider_module.xml"/>
+                <include name="services/**"/>
+                <include name="src/**"/>
+                <include name="tmpl/**"/>
+                <include name="subform/**"/>
+                <include name="language/**"/>
+                <include name="media/**"/>
+            </fileset>
+        </zip>
+    </target>
+    
+    <!-- Build package with code style check -->
+    <target name="build" depends="phpcs-check, init, replacemodule">
+        <zip destfile="${dist}/${filename}">
+            <fileset dir="${build}">
+                <include name="mod_joomlalabs_swiperslider_module.xml"/>
+                <include name="services/**"/>
+                <include name="src/**"/>
+                <include name="tmpl/**"/>
+                <include name="subform/**"/>
+                <include name="language/**"/>
+                <include name="media/**"/>
+            </fileset>
+        </zip>
+        <echo message="Build completed with code style check!" />
+        <echo message="Package: ${dist}/${filename}" />
+    </target>
+    
+    <!-- Clean build directories -->
+    <target name="clean" description="clean up">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+    
 </project>
