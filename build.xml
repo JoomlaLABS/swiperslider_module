@@ -4,7 +4,7 @@
     <!-- Project properties -->
     <property name="VERSION" value="2.1.0"/>
     <tstamp>
-        <format property="DATE" pattern="%d-%m-%Y"/>
+        <format property="DATE" pattern="yyyy-MM-dd" />
     </tstamp>
     <property name="build" value="_build"/>
     <property name="dist" value="_dist"/>
