@@ -335,9 +335,7 @@
                         showon="mediaSource:imageList"
                         label="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_REPEATABLE_FIELDS_LABEL"
                         description="MOD_JOOMLALABS_SWIPERSLIDER_MODULE_REPEATABLE_FIELDS_DESCRIPTION"
-                        min="1"
-                        max="1000"
-                        required="true"
+                        default='{"__field0":{"image":""}}'
                         formsource="/modules/mod_joomlalabs_swiperslider_module/subform/slide.xml"
                         multiple="true"
                         layout="joomla.form.field.subform.repeatable"
