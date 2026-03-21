@@ -1,6 +1,6 @@
 # Swiper Slider Module for Joomla!
 
-![image](https://user-images.githubusercontent.com/906604/91635509-5b882900-e9f9-11ea-869d-73ac6f2822bc.png)
+![Swiper Slider Module for Joomla](https://repository-images.githubusercontent.com/290848183/83ccfa33-accd-4e0e-9417-9962a4afc6da)
 
 ![GitHub all releases](https://img.shields.io/github/downloads/JoomlaLABS/swiperslider_module/total?style=for-the-badge&color=blue)
 ![GitHub release (latest by SemVer)](https://img.shields.io/github/downloads/JoomlaLABS/swiperslider_module/latest/total?style=for-the-badge&color=blue)
@@ -16,6 +16,14 @@
 **Joomla!LABS Swiper Slider Module** is a powerful and modern slider module for Joomla!, built on the popular [Swiper.js](https://swiperjs.com) framework. It provides a feature-rich, mobile-friendly, and hardware-accelerated slider solution with extensive configuration options and multiple layout templates.
 
 Perfect for creating image galleries, carousels, content sliders, and advanced presentation layouts with smooth touch gestures and responsive behavior.
+
+## 🖼️ Screenshots
+
+<p align="center">
+  <img src="https://joomlalabs.com/images/extensions/swiper_slider-hero.png" width="32%" />
+  <img src="https://joomlalabs.com/images/extensions/swiper_slider-layout-3D-cube.png" width="32%" />
+  <img src="https://joomlalabs.com/images/extensions/swiper_slider-layout-cards.png" width="32%" />
+</p>
 
 ## ✨ Features
 
